@@ -18,16 +18,16 @@ body * {
   gap: 2rem;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
 }
 
 .load p {
   font-size: 1.3rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 iframe {
   width: 12rem;
   height: 12rem;
-  pointer-events: none;
 }
