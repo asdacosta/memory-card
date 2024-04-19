@@ -117,7 +117,7 @@ svg {
   grid-column: 2 / -1;
 
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(4, minmax(13rem, 1fr));
+  grid-template: repeat(2, 14rem) / repeat(4, minmax(13rem, 1fr));
   gap: 2rem 1rem;
 }
 
@@ -166,7 +166,7 @@ svg {
   }
 
   .cards {
-    grid-template: repeat(4, 13rem) / repeat(2, minmax(10rem, 1fr));
+    grid-template: repeat(4, 12.5rem) / repeat(2, minmax(10rem, 1fr));
     gap: 0.5rem;
   }
 }
