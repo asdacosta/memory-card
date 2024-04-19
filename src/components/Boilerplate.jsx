@@ -1,6 +1,10 @@
 import minionsNav from "../assets/minions-nav.gif";
+import { Card } from "./Card.jsx";
 
 function Boilerplate() {
+  const cardArray = Array.from({ length: 8 }).fill(null);
+  const cards = cardArray.map((card, index) => <Card key={index} />);
+
   return (
     <>
       <div className="cover"></div>
@@ -29,16 +33,7 @@ function Boilerplate() {
             </div>
           </section>
         </section>
-        <section className="cards">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </section>
+        <section className="cards">{cards}</section>
       </section>
     </>
   );
