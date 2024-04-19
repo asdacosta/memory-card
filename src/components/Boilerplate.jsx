@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
 
-function Boilerplate() {
+function Boilerplate(urls) {
   const cardArray = Array.from({ length: 8 }).fill(null);
-  const cards = cardArray.map((card, index) => <Card key={index} />);
+  const cards = cardArray.map((card, index) => (
+    <Card key={index} imgUrl={`url(${urls.urls[index]})`} />
+  ));
 
   return (
     <>
