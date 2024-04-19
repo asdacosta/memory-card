@@ -54,7 +54,7 @@ img {
   height: 100%;
   grid-template: 1fr 10fr / 2fr 5fr;
   gap: 2rem 0;
-  max-width: 57rem;
+  max-width: 70rem;
 }
 
 nav {
@@ -72,7 +72,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding-right: 1.5rem;
   gap: 1rem;
   grid-row: 2 / -1;
   grid-column: 1 / span 1;
@@ -117,27 +117,23 @@ svg {
   grid-column: 2 / -1;
 
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(4, minmax(10rem, 1fr));
+  grid-template: repeat(2, 1fr) / repeat(4, minmax(13rem, 1fr));
   gap: 2rem 1rem;
 }
 
 .cards > div {
   flex: 1 1 5rem;
-  border: 0.1rem solid rgb(255, 238, 0);
+  border: 0.2rem solid rgb(255, 238, 0);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: transform 0.15s;
 }
 
-@media (max-width: 900px) {
-  body {
-    height: 100%;
-  }
-
+@media (max-width: 1150px) {
   .main-body {
     padding: 5rem 1rem;
-    grid-template: 0.5fr 2fr 10fr / 1fr;
-    gap: 0;
+    grid-template: 1fr 2fr 10fr / 1fr;
+    gap: 1rem;
   }
 
   .details {
@@ -153,16 +149,33 @@ svg {
     grid-row: 3 / -1;
     grid-column: 1 / -1;
 
-    grid-template: repeat(4, 12rem) / repeat(auto-fit, minmax(8rem, 1fr));
+    grid-template: repeat(2, 14rem) / repeat(4, minmax(12rem, 1fr));
     gap: 1rem;
   }
 }
 
-@media (max-width: 310px) {
+@media (max-width: 900px) {
+  body {
+    height: 100%;
+  }
+
+  .main-body {
+    padding: 1rem 0.5rem;
+    grid-template: 0.5fr 2fr 10fr / 1fr;
+    gap: 0;
+  }
+
+  .cards {
+    grid-template: repeat(4, 13rem) / repeat(2, minmax(10rem, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 370px) {
   .details {
     flex-direction: column;
   }
   .cards {
-    grid-template: repeat(8, 12rem) / repeat(1, minmax(8rem, 1fr));
+    grid-template: repeat(8, 12rem) / repeat(1, minmax(10.5rem, 1fr));
   }
 }
