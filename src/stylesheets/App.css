@@ -126,6 +126,7 @@ svg {
   border: 0.1rem solid rgb(255, 238, 0);
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: transform 0.15s;
 }
 
 @media (max-width: 900px) {
