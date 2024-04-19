@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-function Card() {
+function Card(imgUrl) {
   const [skew, setSkew] = useState({ x: 0, y: 0 });
-
   function startSkew(event) {
     const bounding = event.currentTarget.getBoundingClientRect();
     const centerX = bounding.left + bounding.width / 2;
@@ -22,6 +21,9 @@ function Card() {
       onMouseOut={resetSkew}
       style={{
         transform: `perspective(1000px) rotateX(${-skew.y}deg) rotateY(${-skew.x}deg)`,
+        backgroundImage: `${imgUrl.imgUrl}`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
       }}
     ></div>
   );
