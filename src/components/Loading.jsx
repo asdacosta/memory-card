@@ -1,10 +1,8 @@
-import loadGif from "../assets/load.gif";
-
-function Loading() {
+function Loading({ gif, text }) {
   return (
     <div className="load">
-      <img src={loadGif} alt="Minion in motion" />
-      <p>Initializing...</p>
+      <img src={gif} alt="Minion in motion" />
+      <p>{text}</p>
     </div>
   );
 }
