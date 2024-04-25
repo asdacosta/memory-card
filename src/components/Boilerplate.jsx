@@ -5,14 +5,25 @@ import { ids } from "./ids.js";
 import { Info } from "./Info.jsx";
 import shuffle from "lodash.shuffle";
 import { getImgUrls } from "./FetchImgs.jsx";
+import { Score } from "./Score.jsx";
 
 function Boilerplate({ visible }) {
-  const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
+  const [isClicked, setIsClicked] = useState({
+    clicked: false,
+    display: "none",
+    clickedUrls: [],
+  });
   const [updatedUrl, setUpdatedUrl] = useState(getImgUrls());
+  const [score, setScore] = useState({ current: 0, best: 0 });
 
-  // Should go outside
   async function flipCard(event) {
     event.target.classList.add("clicked");
+
+    // Update Scores
+    setScore((prevScore) => ({ ...prevScore, current: prevScore.current + 1 }));
+    if (score.current >= score.best) {
+      setScore((prevScore) => ({ ...prevScore, best: prevScore.current }));
+    }
 
     async function flipDeg(deg = -90, timeout = 200, pointer = "none") {
       const cards = document.querySelectorAll(".cards > div");
@@ -36,7 +47,7 @@ function Boilerplate({ visible }) {
 
     // Flip to default
     await flipDeg();
-    setIsClicked({ clicked: false, display: "none" });
+    setIsClicked({ ...isClicked, clicked: false, display: "none" });
     await flipDeg("0", 200, "auto");
 
     event.target.classList.remove("clicked");
@@ -59,14 +70,7 @@ function Boilerplate({ visible }) {
           <img src={minionsNav} alt="Title" />
         </nav>
         <section className="details">
-          <section>
-            <p>
-              Current Score: <span>0</span>
-            </p>
-            <p>
-              Best Score: <span>0</span>
-            </p>
-          </section>
+          <Score current={score.current} best={score.best} />
           <Info />
         </section>
         <section className="cards">{cards}</section>
