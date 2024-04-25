@@ -8,37 +8,24 @@ function Boilerplate({ urls }) {
 
   async function flipCard(event) {
     event.target.classList.add("clicked");
-    const cards = document.querySelectorAll(".cards > div");
 
+    async function flipDeg(deg = -90, timeout = 200, pointer = "none") {
+      const cards = document.querySelectorAll(".cards > div");
+      cards.forEach((card) => {
+        card.style.pointerEvents = `${pointer}`;
+        card.style.transform = `rotateY(${deg}deg)`;
+      });
+      await new Promise((resolve) => {
+        setTimeout(resolve, timeout);
+      });
+    }
     setIsClicked({ ...isClicked, clicked: true });
-    cards.forEach((card) => {
-      card.style.pointerEvents = "none";
-      card.style.transform = "rotateY(-90deg)";
-    });
-    await new Promise((resolve) => {
-      setTimeout(resolve, 200);
-    });
-
+    await flipDeg();
     setIsClicked({ ...isClicked, display: "block" });
-    cards.forEach((card) => {
-      card.style.transform = "rotateY(-180deg)";
-    });
-    await new Promise((resolve) => {
-      setTimeout(resolve, 500);
-    });
-
-    cards.forEach((card) => {
-      card.style.transform = "rotateY(-90deg)";
-    });
-    await new Promise((resolve) => {
-      setTimeout(resolve, 200);
-    });
-
+    await flipDeg("-180", 500);
+    await flipDeg();
     setIsClicked({ clicked: false, display: "none" });
-    cards.forEach((card) => {
-      card.style.pointerEvents = "auto";
-      card.style.transform = "rotateY(0)";
-    });
+    await flipDeg("0", 200, "auto");
 
     event.target.classList.remove("clicked");
   }
