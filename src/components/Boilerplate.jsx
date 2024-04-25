@@ -16,21 +16,53 @@ function Boilerplate({ visible }) {
   const [updatedUrl, setUpdatedUrl] = useState(getImgUrls());
   const [score, setScore] = useState({ current: 0, best: 0 });
 
-  async function flipCard(event) {
-    event.target.classList.add("clicked");
-    // Update clickedUrls
+  function resetIfCardIsSelectedTwice(event) {
+    if (isClicked.clickedUrls.length >= 1) {
+      for (const url of isClicked.clickedUrls) {
+        if (url === getComputedStyle(event).getPropertyValue("background-image")) {
+          setScore((prevScore) => ({ ...prevScore, current: 0 }));
+          setIsClicked((prevIsClicked) => ({ ...prevIsClicked, clickedUrls: [] }));
+          setTimeout(() => {
+            alert("More practice will improve your memory.");
+          }, 100);
+          return true;
+        }
+      }
+    }
+  }
+
+  function updateClickedUrls(event) {
     setIsClicked((prevIsClicked) => ({
       ...prevIsClicked,
       clickedUrls: prevIsClicked.clickedUrls.push(
-        getComputedStyle(event.currentTarget).getPropertyValue("background-image")
+        getComputedStyle(event).getPropertyValue("background-image")
       ),
     }));
+  }
 
-    // Update Scores
+  function updateScores() {
     setScore((prevScore) => ({ ...prevScore, current: prevScore.current + 1 }));
     if (score.current >= score.best) {
       setScore((prevScore) => ({ ...prevScore, best: prevScore.current }));
     }
+    if (score.current === 7) {
+      setScore((prevScore) => ({ ...prevScore, current: 0 }));
+      setIsClicked((prevIsClicked) => ({ ...prevIsClicked, clickedUrls: [] }));
+      setTimeout(() => {
+        alert("You have good memory!");
+      }, 100);
+      return true;
+    }
+  }
+
+  async function flipCard(event) {
+    const isSelectedTwice = resetIfCardIsSelectedTwice(event.currentTarget);
+    if (isSelectedTwice === true) return;
+    updateClickedUrls(event.currentTarget);
+    const currentIsHighest = updateScores();
+    if (currentIsHighest === true) return;
+
+    event.target.classList.add("clicked");
 
     async function flipDeg(deg = -90, timeout = 200, pointer = "none") {
       const cards = document.querySelectorAll(".cards > div");
