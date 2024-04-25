@@ -25,13 +25,16 @@ function Boilerplate({ visible }) {
       });
     }
 
+    // Flip 180deg
     setIsClicked({ ...isClicked, clicked: true });
     await flipDeg();
     setIsClicked({ ...isClicked, display: "block" });
     await flipDeg("-180", 500);
 
+    // Shuffle urls
     setUpdatedUrl(shuffle(updatedUrl));
 
+    // Flip to default
     await flipDeg();
     setIsClicked({ clicked: false, display: "none" });
     await flipDeg("0", 200, "auto");
