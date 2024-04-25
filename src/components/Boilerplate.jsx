@@ -1,11 +1,13 @@
 import { useState } from "react";
 import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
+import { v4 as uuid } from "uuid";
 
 function Boilerplate({ urls }) {
   const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
   const cardArray = Array.from({ length: 8 }).fill(null);
 
+  // Should go outside
   async function flipCard(event) {
     event.target.classList.add("clicked");
 
@@ -19,10 +21,12 @@ function Boilerplate({ urls }) {
         setTimeout(resolve, timeout);
       });
     }
+
     setIsClicked({ ...isClicked, clicked: true });
     await flipDeg();
     setIsClicked({ ...isClicked, display: "block" });
     await flipDeg("-180", 500);
+
     await flipDeg();
     setIsClicked({ clicked: false, display: "none" });
     await flipDeg("0", 200, "auto");
@@ -30,10 +34,10 @@ function Boilerplate({ urls }) {
     event.target.classList.remove("clicked");
   }
 
-  // Use unique keys
+  const ids = [uuid(), uuid(), uuid(), uuid(), uuid(), uuid(), uuid(), uuid()];
   const cards = cardArray.map((card, index) => (
     <Card
-      key={index}
+      key={ids[index]}
       imgUrl={`url(${urls[index]})`}
       onClick={flipCard}
       isClicked={isClicked}
