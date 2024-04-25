@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
 import { ids } from "./ids.js";
 import { Info } from "./Info.jsx";
 import shuffle from "lodash.shuffle";
+import { getImgUrls } from "./FetchImgs.jsx";
 
-function Boilerplate({ urls }) {
+function Boilerplate({ visible }) {
   const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
-  const [updatedUrl, setUpdatedUrl] = useState(urls);
+  const [updatedUrl, setUpdatedUrl] = useState(getImgUrls());
 
   // Should go outside
   async function flipCard(event) {
@@ -29,7 +30,7 @@ function Boilerplate({ urls }) {
     setIsClicked({ ...isClicked, display: "block" });
     await flipDeg("-180", 500);
 
-    setUpdatedUrl(shuffle(urls));
+    setUpdatedUrl(shuffle(updatedUrl));
 
     await flipDeg();
     setIsClicked({ clicked: false, display: "none" });
@@ -49,8 +50,8 @@ function Boilerplate({ urls }) {
 
   return (
     <>
-      <div className="cover"></div>
-      <section className="main-body">
+      <div style={{ visibility: visible }} className="cover"></div>
+      <section style={{ visibility: visible }} className="main-body">
         <nav>
           <img src={minionsNav} alt="Title" />
         </nav>
