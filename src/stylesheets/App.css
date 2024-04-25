@@ -82,13 +82,22 @@ nav {
 .details > section {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: last baseline;
   width: 9rem;
-  padding-right: 0.55rem;
   height: 6rem;
   border-radius: 0.5rem;
   background-color: rgba(255, 238, 0, 0.65);
+}
+
+.details > section:first-child {
+  justify-content: space-evenly;
+  align-items: last baseline;
+  padding-right: 0.55rem;
+}
+
+.details > section:last-child {
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .details > section:first-child > p {
@@ -99,6 +108,12 @@ nav {
   cursor: context-menu;
 }
 
+.details > section:last-child > p {
+  display: none;
+  font-size: 0.8rem;
+  text-align: justify;
+}
+
 button {
   color: white;
   border-radius: 1rem;
@@ -107,7 +122,7 @@ button {
 }
 
 svg {
-  width: 1.5rem;
+  width: 2rem;
   fill: rgb(35, 75, 75);
   cursor: pointer;
 }
