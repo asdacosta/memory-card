@@ -1,11 +1,56 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
 
-function Boilerplate(urls) {
+function Boilerplate({ urls }) {
+  const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
   const cardArray = Array.from({ length: 8 }).fill(null);
+
+  async function flipCard(event) {
+    event.target.classList.add("clicked");
+    const cards = document.querySelectorAll(".cards > div");
+
+    setIsClicked({ ...isClicked, clicked: true });
+    cards.forEach((card) => {
+      card.style.pointerEvents = "none";
+      card.style.transform = "rotateY(-90deg)";
+    });
+    await new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
+
+    setIsClicked({ ...isClicked, display: "block" });
+    cards.forEach((card) => {
+      card.style.transform = "rotateY(-180deg)";
+    });
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
+
+    cards.forEach((card) => {
+      card.style.transform = "rotateY(-90deg)";
+    });
+    await new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
+
+    setIsClicked({ clicked: false, display: "none" });
+    cards.forEach((card) => {
+      card.style.pointerEvents = "auto";
+      card.style.transform = "rotateY(0)";
+    });
+
+    event.target.classList.remove("clicked");
+  }
+
+  // Use unique keys
   const cards = cardArray.map((card, index) => (
-    <Card key={index} imgUrl={`url(${urls.urls[index]})`} />
+    <Card
+      key={index}
+      imgUrl={`url(${urls[index]})`}
+      onClick={flipCard}
+      isClicked={isClicked}
+    />
   ));
 
   return (
