@@ -1,7 +1,9 @@
 import { useState } from "react";
+import bananaImage from "../assets/banana.png";
 
-function Card(imgUrl) {
+function Card({ imgUrl, onClick, isClicked }) {
   const [skew, setSkew] = useState({ x: 0, y: 0 });
+
   function startSkew(event) {
     const bounding = event.currentTarget.getBoundingClientRect();
     const centerX = bounding.left + bounding.width / 2;
@@ -11,21 +13,30 @@ function Card(imgUrl) {
     setSkew({ x: angleX, y: angleY });
   }
 
-  function resetSkew() {
+  function resetSkew(event) {
+    if (event.currentTarget.classList.contains("clicked")) {
+      return;
+    }
     setSkew({ x: 0, y: 0 });
   }
 
   return (
     <div
+      onClick={onClick}
       onMouseMove={startSkew}
       onMouseOut={resetSkew}
       style={{
         transform: `perspective(1000px) rotateX(${-skew.y}deg) rotateY(${-skew.x}deg)`,
-        backgroundImage: `${imgUrl.imgUrl}`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
+        backgroundImage: `${imgUrl}`,
       }}
-    ></div>
+    >
+      <img
+        src={bananaImage}
+        alt="Banana background"
+        className="banana-bg"
+        style={{ display: `${isClicked.display}` }}
+      />
+    </div>
   );
 }
 
