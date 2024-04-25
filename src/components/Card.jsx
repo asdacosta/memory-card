@@ -8,8 +8,8 @@ function Card({ imgUrl, onClick, isClicked }) {
     const bounding = event.currentTarget.getBoundingClientRect();
     const centerX = bounding.left + bounding.width / 2;
     const centerY = bounding.top + bounding.height / 2;
-    const angleX = ((event.clientX - centerX) / bounding.width) * 15;
-    const angleY = ((centerY - event.clientY) / bounding.width) * 15;
+    const angleX = ((event.clientX - centerX) / bounding.width) * 20;
+    const angleY = ((centerY - event.clientY) / bounding.width) * 20;
     setSkew({ x: angleX, y: angleY });
   }
 
