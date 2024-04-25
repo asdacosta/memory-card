@@ -1,11 +1,10 @@
 import { useState } from "react";
 import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
-import { v4 as uuid } from "uuid";
+import { ids } from "./ids.js";
 
 function Boilerplate({ urls }) {
   const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
-  const cardArray = Array.from({ length: 8 }).fill(null);
 
   // Should go outside
   async function flipCard(event) {
@@ -14,7 +13,7 @@ function Boilerplate({ urls }) {
     async function flipDeg(deg = -90, timeout = 200, pointer = "none") {
       const cards = document.querySelectorAll(".cards > div");
       cards.forEach((card) => {
-        card.style.pointerEvents = `${pointer}`;
+        card.style.pointerEvents = pointer;
         card.style.transform = `rotateY(${deg}deg)`;
       });
       await new Promise((resolve) => {
@@ -34,10 +33,9 @@ function Boilerplate({ urls }) {
     event.target.classList.remove("clicked");
   }
 
-  const ids = [uuid(), uuid(), uuid(), uuid(), uuid(), uuid(), uuid(), uuid()];
-  const cards = cardArray.map((card, index) => (
+  const cards = ids.map((id, index) => (
     <Card
-      key={ids[index]}
+      key={id}
       imgUrl={`url(${urls[index]})`}
       onClick={flipCard}
       isClicked={isClicked}
