@@ -18,6 +18,13 @@ function Boilerplate({ visible }) {
 
   async function flipCard(event) {
     event.target.classList.add("clicked");
+    // Update clickedUrls
+    setIsClicked((prevIsClicked) => ({
+      ...prevIsClicked,
+      clickedUrls: prevIsClicked.clickedUrls.push(
+        getComputedStyle(event.currentTarget).getPropertyValue("background-image")
+      ),
+    }));
 
     // Update Scores
     setScore((prevScore) => ({ ...prevScore, current: prevScore.current + 1 }));
