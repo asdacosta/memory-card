@@ -3,6 +3,7 @@ import "./stylesheets/reset.css";
 import "./stylesheets/App.css";
 import { Loading } from "./components/Loading.jsx";
 import { Boilerplate } from "./components/Boilerplate.jsx";
+import loadGif from "./assets/load.gif";
 
 function App() {
   const [load, setLoad] = useState(true);
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <>
-      {load ? <Loading /> : null}
+      {load ? <Loading gif={loadGif} text={"Initializing..."} /> : null}
       <Boilerplate visible={isVisible} />
     </>
   );
