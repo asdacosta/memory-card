@@ -81,7 +81,7 @@ function Boilerplate({ visible }) {
           reveal: false,
           display: "grid",
         });
-      }, 2000);
+      }, 1800);
       return true;
     }
   }
