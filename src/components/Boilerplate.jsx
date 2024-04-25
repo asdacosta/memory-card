@@ -3,9 +3,11 @@ import minionsNav from "../assets/minions-nav.gif";
 import { Card } from "./Card.jsx";
 import { ids } from "./ids.js";
 import { Info } from "./Info.jsx";
+import shuffle from "lodash.shuffle";
 
 function Boilerplate({ urls }) {
   const [isClicked, setIsClicked] = useState({ clicked: false, display: "none" });
+  const [updatedUrl, setUpdatedUrl] = useState(urls);
 
   // Should go outside
   async function flipCard(event) {
@@ -27,6 +29,8 @@ function Boilerplate({ urls }) {
     setIsClicked({ ...isClicked, display: "block" });
     await flipDeg("-180", 500);
 
+    setUpdatedUrl(shuffle(urls));
+
     await flipDeg();
     setIsClicked({ clicked: false, display: "none" });
     await flipDeg("0", 200, "auto");
@@ -34,10 +38,10 @@ function Boilerplate({ urls }) {
     event.target.classList.remove("clicked");
   }
 
-  const cards = ids.map((id, index) => (
+  let cards = ids.map((id, index) => (
     <Card
       key={id}
-      imgUrl={`url(${urls[index]})`}
+      imgUrl={`url(${updatedUrl[index]})`}
       onClick={flipCard}
       isClicked={isClicked}
     />
