@@ -6,6 +6,9 @@ import { Info } from "./Info.jsx";
 import shuffle from "lodash.shuffle";
 import { getImgUrls } from "./FetchImgs.jsx";
 import { Score } from "./Score.jsx";
+import clearGif from "../assets/clear.gif";
+import { Loading } from "./Loading.jsx";
+import wonGif from "../assets/won.gif";
 
 function Boilerplate({ visible }) {
   const [isClicked, setIsClicked] = useState({
@@ -15,6 +18,12 @@ function Boilerplate({ visible }) {
   });
   const [updatedUrl, setUpdatedUrl] = useState(getImgUrls());
   const [score, setScore] = useState({ current: 0, best: 0 });
+  const [revealLoad, setRevealLoad] = useState({
+    text: null,
+    gif: null,
+    reveal: false,
+    display: "grid",
+  });
 
   function resetIfCardIsSelectedTwice(event) {
     if (isClicked.clickedUrls.length >= 1) {
@@ -22,9 +31,20 @@ function Boilerplate({ visible }) {
         if (url === getComputedStyle(event).getPropertyValue("background-image")) {
           setScore((prevScore) => ({ ...prevScore, current: 0 }));
           setIsClicked((prevIsClicked) => ({ ...prevIsClicked, clickedUrls: [] }));
+          setRevealLoad({
+            text: "Let me help wipe your memory.",
+            gif: clearGif,
+            reveal: true,
+            display: "none",
+          });
           setTimeout(() => {
-            alert("More practice will improve your memory.");
-          }, 100);
+            setRevealLoad({
+              text: "Let me help wipe your memory.",
+              gif: clearGif,
+              reveal: false,
+              display: "grid",
+            });
+          }, 4500);
           return true;
         }
       }
@@ -48,9 +68,20 @@ function Boilerplate({ visible }) {
     if (score.current === 7) {
       setScore((prevScore) => ({ ...prevScore, current: 0 }));
       setIsClicked((prevIsClicked) => ({ ...prevIsClicked, clickedUrls: [] }));
+      setRevealLoad({
+        text: "You have good memory!",
+        gif: wonGif,
+        reveal: true,
+        display: "none",
+      });
       setTimeout(() => {
-        alert("You have good memory!");
-      }, 100);
+        setRevealLoad({
+          text: "You have good memory!",
+          gif: wonGif,
+          reveal: false,
+          display: "grid",
+        });
+      }, 2000);
       return true;
     }
   }
@@ -103,8 +134,15 @@ function Boilerplate({ visible }) {
 
   return (
     <>
-      <div style={{ visibility: visible }} className="cover"></div>
-      <section style={{ visibility: visible }} className="main-body">
+      {revealLoad.reveal ? <Loading gif={revealLoad.gif} text={revealLoad.text} /> : null}
+      <div
+        style={{ visibility: visible, display: revealLoad.display }}
+        className="cover"
+      ></div>
+      <section
+        style={{ visibility: visible, display: revealLoad.display }}
+        className="main-body"
+      >
         <nav>
           <img src={minionsNav} alt="Title" />
         </nav>
