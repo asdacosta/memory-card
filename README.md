@@ -96,9 +96,12 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
-| File             | Description                      |
-| ---------------- | -------------------------------- |
-| `src/assets/###` | Photo created by ### on [###](). |
+| File                    | Description                                                            |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `src/assets/banana.png` | Photo created by Meesgroothuis on [Pixabay](https://pixabay.com/).     |
+| `src/assets/bg.jpg`     | Photo created by Alexas Fotos on [Pixabay](https://pixabay.com/).      |
+| `Fetched Images`        | Photos created by Alexas Fotos on [Pixabay API](https://pixabay.com/). |
+| `src/assets/*.gif`      | Photo from [Giphy](https://giphy.com/).                                |
 
 </details>
 
@@ -107,7 +110,12 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
-- [ ] ###
+- [ ] Add sound.
+- [ ] Use an svg favicon.
+- [ ] Make flip appear 3d.
+- [ ] Display remaining moves at bottom (n/8).
+- [ ] Make sure images fully appear before Loading ends.
+- [ ] Add difficulty level.
 
 </details>
 
