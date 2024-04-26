@@ -46,22 +46,25 @@
 
 ## 🌐 Origin
 
-<!-- [The Odin Project](https://www.theodinproject.com/) -->
+[The Odin Project](https://www.theodinproject.com/)
 
 ## 📝 Description
 
-Store all template files.
+Builds a memory card game.
 
 <details>
 <summary>Features</summary>
 
-- ###
+- Loads to display status - Initializing page, after loss, and win.
+- Displays info on hover.
+- Updates scores in real-time.
+- 3d interaction effect on cards.
 
 </details>
 
 ## 🎯 Relevance
 
-To solidify concepts of `###` in ###.
+To solidify concepts of `State and Effects` in React.
 
 ## 👥 Intended Audience
 
