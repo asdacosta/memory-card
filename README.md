@@ -79,15 +79,25 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
-| File              | Description                                                                                                                                                             |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src/*`           | Source files that are bundled into the output directory `dist/`.                                                                                                        |
-| `src/index.js`    | The main JavaScript entry point that bundling begins.                                                                                                                   |
-| `dist/*`          | Output files from bundling of files in directory `src/`.                                                                                                                |
-| `dist/main.js`    | Main JavaScript output file that contains the bundled JavaScript code. Code is minified and optimized for deployment (Due to mode set to production in webpack config). |
-| `package*`        | Contains details of project and dependencies versions.                                                                                                                  |
-| `algorithm.txt`   | Algorithm for `JavaScript`.                                                                                                                                             |
-| `readme-assets/*` | Live demo and different screen views used in `README.md`.                                                                                                               |
+| File                             | Description                                                                                                                                                             |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/*`                          | Source files that are bundled into the output directory `dist/`.                                                                                                        |
+| `src/main.jsx`                   | The main JavaScript entry point that bundling begins.                                                                                                                   |
+| `src/App.jsx`                    | Main component where overall structure and other layout components of the app are contained.                                                                            |
+| `src/assets/*`                   | All assets(imgs, icons, vids) used in website.                                                                                                                          |
+| `src/components/Boilerplate.jsx` | All components in body assembles here.                                                                                                                                  |
+| `src/components/Card.jsx`        | Creates each card.                                                                                                                                                      |
+| `src/components/FetchImgs.jsx`   | Fetches all image urls.                                                                                                                                                 |
+| `src/components/ids.js`          | Generates ids with [uuid](https://www.npmjs.com/package/uuid).                                                                                                          |
+| `src/components/Info.jsx`        | Displays info section.                                                                                                                                                  |
+| `src/components/Loading.jsx`     | Creates a loading display with two props: `gif` and `text`.                                                                                                             |
+| `src/components/Score.jsx`       | Displays Score section.                                                                                                                                                 |
+| `src/styles/App.css`             | Main stylesheet for entire site.                                                                                                                                        |
+| `src/styles/reset.css`           | Sets style to default for consistency across different devices and browsers.                                                                                            |
+| `dist/*`                         | Output files from bundling of files in directory `src/`.                                                                                                                |
+| `dist/main.js`                   | Main JavaScript output file that contains the bundled JavaScript code. Code is minified and optimized for deployment (Due to mode set to production in webpack config). |
+| `package*`                       | Contains details of project and dependencies versions.                                                                                                                  |
+| `readme-assets/*`                | Live demo and different screen views used in `README.md`.                                                                                                               |
 
 </details>
 
