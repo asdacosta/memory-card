@@ -21,12 +21,12 @@
     <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest badge">
     <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React badge">
     <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite badge">
-    <!-- <h4><a href="https://asdacosta.github.io/###/">Live Preview</a></h4> -->
+    <h4><a href="https://asdacosta.github.io/memory-card/">Live Preview</a></h4>
 </div>
 
 **Demo:**
 
-<!-- ![Live Demo](./readme-assets/) -->
+![Live Demo](./readme-assets/live.gif)
 
 <details>
 
