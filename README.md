@@ -127,6 +127,7 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
+- [ ] Fix load resource error in console.
 - [ ] Add sound.
 - [ ] Use an svg favicon.
 - [ ] Make flip appear 3d.
