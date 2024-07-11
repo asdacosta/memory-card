@@ -44,7 +44,7 @@ function Boilerplate({ visible }) {
               reveal: false,
               display: "grid",
             });
-          }, 6000);
+          }, 6050);
           return true;
         }
       }
