@@ -13,7 +13,7 @@ function App() {
     setTimeout(() => {
       setLoad(false);
       setIsVisible("visible");
-    }, 2000);
+    }, 5000);
   }, []);
 
   return (
